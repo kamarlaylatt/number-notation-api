@@ -17,6 +17,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  songs         Song[]
 
   @@map("user")
 }
@@ -54,6 +55,37 @@ model Account {
 
   @@index([userId])
   @@map("account")
+}
+
+enum Key {
+  C
+  Db
+  D
+  Eb
+  E
+  F
+  Gb
+  G
+  Ab
+  A
+  Bb
+  B
+}
+
+model Song {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  key       Key
+  tempo     Int
+  style     String
+  notes     Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("song")
 }
 
 model Verification {
