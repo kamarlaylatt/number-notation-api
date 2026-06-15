@@ -1,5 +1,5 @@
 import prisma from "../../lib/prisma";
-import { Key, Prisma } from "../../../generated/prisma";
+import { Key, Prisma } from "../../../generated/prisma/client";
 
 export const getMySongs = (userId: string) => {
   return prisma.song.findMany({ where: { userId }, orderBy: { createdAt: "desc" } });
