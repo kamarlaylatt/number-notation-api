@@ -10,4 +10,10 @@ export const auth = betterAuth({
     enabled: true,
   },
   trustedOrigins: [(process.env.FRONTEND_URL ?? "http://localhost:3000").replace(/\/$/, "")],
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+    },
+  },
 });
