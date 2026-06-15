@@ -1,6 +1,6 @@
 import { Router } from "express";
-import * as songsController from "./songs.controller";
-import { requireAuth } from "../../middlewares/requireAuth";
+import * as songsController from "./songs.controller.js";
+import { requireAuth } from "../../middlewares/requireAuth.js";
 
 const router = Router();
 

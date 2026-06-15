@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as songsService from "./songs.service";
+import * as songsService from "./songs.service.js";
 
 export const getAll = async (req: Request, res: Response) => {
   const songs = await songsService.getMySongs(req.user!.id);

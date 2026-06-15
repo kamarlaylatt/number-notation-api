@@ -1,4 +1,4 @@
-import { auth } from "../src/lib/auth";
+import { auth } from "../src/lib/auth.js";
 
 const [name, email, password] = process.argv.slice(2);
 

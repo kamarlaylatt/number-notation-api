@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./src/lib/auth";
-import songsRouter from "./src/modules/songs/songs.routes";
+import { auth } from "./src/lib/auth.js";
+import songsRouter from "./src/modules/songs/songs.routes.js";
 
 const app = express();
 const port = process.env.PORT ?? "3000";
