@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "npx tsx watch --env-file=.env index.ts",
     "user:create": "npx tsx --env-file=.env scripts/create-user.ts",
+    "postinstall": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

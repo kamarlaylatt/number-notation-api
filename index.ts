@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./src/lib/auth";
-import prisma from "./src/lib/prisma";
 import songsRouter from "./src/modules/songs/songs.routes";
 
 const app = express();
@@ -28,7 +27,12 @@ app.get("/", (req, res) => {
 
 app.use("/api/mysongs", songsRouter);
 
-app.listen(port, async () => {
-  await prisma.$connect();
-  console.log(`Server listening on port ${port}`);
-});
+// On Vercel the app runs as a serverless function via the default export.
+// Only start a long-lived listener for local development.
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
+}
+
+export default app;
