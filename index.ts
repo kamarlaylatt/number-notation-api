@@ -11,7 +11,7 @@ const port = process.env.PORT ?? "3000";
 // Must be registered before the auth handler and routes.
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
+    origin: (process.env.FRONTEND_URL ?? "http://localhost:3000").replace(/\/$/, ""),
     credentials: true,
   })
 );
