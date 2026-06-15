@@ -2,7 +2,12 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    // The app is ESM ("type": "module") and is bundled by esbuild on Vercel
+    // (and run via tsx locally). "bundler" resolution matches those tools and
+    // avoids requiring explicit .js extensions on relative imports.
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": ["**/*.ts"],
   "exclude": ["dist"]
